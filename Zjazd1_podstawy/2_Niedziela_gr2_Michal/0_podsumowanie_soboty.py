@@ -1,6 +1,6 @@
 #  struktury: if(elif,else) for
-#  typy zmiennych: int, float, bool, str, list
-#  operatory porównania: == >= <= > < !=    in
+#  typy zmiennych: int, float, bool, str, list, None
+#  operatory porównania: == >= <= > < !=    in, is
 #  operatory logiczne: or and not ^
 
 #  zagadki: def format f""  try except while
