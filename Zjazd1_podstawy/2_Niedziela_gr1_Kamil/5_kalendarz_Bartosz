@@ -1,0 +1,13 @@
+s = 4    # "startowy" dzień
+d = 31   # ilość dni miesiąca
+for a in range(-s,d+1):
+    if (a+s) % 7 == 0 and a > 0:      # tu zapomniałem o warunku - pierwsze a=-4, s=4, więc -4+4=0 i reszta z dzielenia 0
+        print("\033[0;31m", end="")
+    if (a+s) % 7 == 6:
+        print("\033[0;34m", end="")
+    if a <= 0:
+        print(end="\t")
+    else:
+        print(a, end="\033[0m\t")
+    if (a+s) % 7 == 0:
+        print()
