@@ -23,8 +23,12 @@ for i in my_list:
         print('długie słowo\n...................................')
 
 print('\nPętla5 - czy dane slowo jest w liście?')
-word = 'mazurek'
+word = 'piesek'
 for i in my_list:
-    print(i)
-    if len(i) > 5:
-        print('długie słowo\n...................................')
+    if i == word:
+        print('znaleziono slowo', i)
+
+print('\nPętla6 - czy dane slowo jest w liście?')
+word = 'piesek'
+if word in my_list:
+    print('Znaleziono slowo', word)
