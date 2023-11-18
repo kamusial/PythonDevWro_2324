@@ -24,7 +24,7 @@ def add_user(user):
             user_dict[user] = passwd1
             break
         else:
-            print('hasla nie pasuja, jeszcze raz')
+            print('Zle, jeszcze raz')
 
 
 def suggest_username(user):
