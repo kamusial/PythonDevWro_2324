@@ -8,12 +8,18 @@
 # program sprawdza poziom skomplikowania hasła
 
 from funkcje_do_programu import *
-
 username = input('Podaj uzytkownika: ')
-if is_user_available(username):
-    add_user(username)
-else:
-    print(f'Sugeruje nazwę {suggest_username(username)}')
-    decision = input('Chcesz wprowadzić inną nazwę (N), czy skorzystać z zaproponowanej nazwy (P)? ')
+while True:
+    if is_user_available(username):
+        add_user(username)
+        break
+    else:
+        print(f'Sugeruje nazwę {suggest_username(username)}')
+        decision = input('Chcesz wprowadzić inną nazwę (N), czy skorzystać z zaproponowanej nazwy (P)? ')
+        if decision == 'P':
+            username = suggest_username(username)
+        else:
+            username = input('Podaj nowa nazwe uzytkownika')
+print(user_dict)
 
 
