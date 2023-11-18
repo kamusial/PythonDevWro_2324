@@ -38,3 +38,6 @@ moj_string = 'to jest moj string'
 print(moj_string[3:13:2])
 print(moj_string[::-1])
 moj_string = moj_string.replace(' ', '')
+
+my_list = [1, 2, 3, 4]
+print(len(my_list) * 5)
