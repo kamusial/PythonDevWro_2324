@@ -24,12 +24,17 @@ while (a < 10):
     print(f'a wynosi {a}')
     a += 3
 
-while True:
-    wiek = int(input('Ile masz lat? '))
-    if wiek >= 18:
-        break
-    else:
-        print('zly wiek, sprobuj jeszcze raz')
+# while True:
+#     wiek = int(input('Ile masz lat? '))
+#     if wiek >= 18:
+#         break
+#     else:
+#         print('zly wiek, sprobuj jeszcze raz')
+#
+# print('Dalsza czesac programu')
 
-print('Dalsza czesac programu')
+moj_string = 'to jest moj string'
 
+print(moj_string[3:13:2])
+print(moj_string[::-1])
+moj_string = moj_string.replace(' ', '')
