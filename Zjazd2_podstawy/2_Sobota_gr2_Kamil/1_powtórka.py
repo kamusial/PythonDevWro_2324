@@ -10,5 +10,26 @@ if c == 'tata':
     print('Czesc tata')
 elif c == 'mama' and d_lista[2] > 0:
     print(f'Nasze slowo to {c}')
+    print('Nasze slowo to',c)
 else:
     print('No nic nie pasuje')
+
+for i in range(3, 25, 4):
+    print(i)
+
+for i in range(100, -1, -10):
+    print(i)
+
+while (a < 10):
+    print(f'a wynosi {a}')
+    a += 3
+
+while True:
+    wiek = int(input('Ile masz lat? '))
+    if wiek >= 18:
+        break
+    else:
+        print('zly wiek, sprobuj jeszcze raz')
+
+print('Dalsza czesac programu')
+
