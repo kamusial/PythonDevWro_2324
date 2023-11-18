@@ -20,7 +20,7 @@ def add_user(user):
     while True:
         passwd1 = input('Podaj haslo: ')
         passwd2 = input('Potwierdź haslo: ')
-        if passwd1 == passwd2:
+        if passwd1 == passwd2 and passwd_has_CAP_small_letter(passwd1):
             user_dict[user] = passwd1
             break
         else:
@@ -29,3 +29,11 @@ def add_user(user):
 
 def suggest_username(user):
     return user + '1'
+
+
+def passwd_has_CAP_small_letter(passwd):
+    if passwd != passwd.lower() and passwd != passwd.upper():
+        print('Haslo posiada duza i mala litera')
+        return True
+    print('Haslo NIE posiada duzej lub malej litery')
+    return False
