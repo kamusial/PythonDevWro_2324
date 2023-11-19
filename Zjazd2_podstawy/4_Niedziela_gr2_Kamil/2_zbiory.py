@@ -12,5 +12,7 @@ bemowo = {4544, 3423, 3254, 8769, 5436, 2345, 6532, 1243}
 zoliborz = {7648, 2345, 2356, 3987, 1234, 3476, 3254}
 zbior_pusty = set()
 
-#suma zbiorów ->   |
-# cześć wspólna zbiorów
+# suma zbiorów ->              |
+# cześć wspólna zbiorów   ->   &
+# różnica zbiorów  ->          -
+# różnica symetryczna  ->      ^
