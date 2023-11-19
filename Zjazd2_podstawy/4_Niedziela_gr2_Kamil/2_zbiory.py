@@ -53,3 +53,12 @@ print(f'Ludzie mieszkający tylko w jendym miejscu: {krzyki ^ centrum}')
 wszyscy = chorzy_rok | chorzy_miesiac | centrum | krzyki
 NFZ |= wszyscy
 print(len(NFZ))
+
+# pesele żeńskie mają ostatnią cyfrę parzystą, męskie – nieparzystą.
+# zróbmy nowe zbiory, osobne dla mężczyzn i kobiet
+NFZ_men = set()
+NFZ_women = set()
+for pesel in NFZ:
+    if pesel % 2 == 0:
+        NFZ_women.add(pesel)
+NFZ_men = NFZ - NFZ_women

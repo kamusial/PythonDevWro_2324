@@ -20,7 +20,8 @@ def add_user(user):
     while True:
         passwd1 = input('Podaj haslo: ')
         passwd2 = input('Potwierdź haslo: ')
-        if passwd1 == passwd2 and passwd_has_CAP_small_letter(passwd1):
+        if passwd1 == passwd2 and passwd_has_CAP_small_letter(passwd1) \
+                and passwd_has_digit(passwd1) and passwd_has_special_character(passwd1):
             user_dict[user] = passwd1
             break
         else:
@@ -37,3 +38,18 @@ def passwd_has_CAP_small_letter(passwd):
         return True
     print('Haslo NIE posiada duzej lub malej litery')
     return False
+
+
+def passwd_has_special_character(passwd):
+    set_of_special_character = set(',./;[]\'\\"')
+    if len(set(passwd) & set_of_special_character) > 0:
+        return True
+    return False
+
+
+def passwd_has_digit(passwd):
+    return any(char.isdigit() for char in passwd)
+
+
+
+
