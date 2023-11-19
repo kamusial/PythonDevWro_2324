@@ -49,5 +49,7 @@ if len(centrum & krzyki) > 0:
 
 print(f'Ludzie mieszkający tylko w jendym miejscu: {krzyki ^ centrum}')
 
-
-
+# każdy: chory, zdrowy, z centeum i z krzyków, powinien być w bazie NFZ. Jeśli nie ma, trzeba dopisać)
+wszyscy = chorzy_rok | chorzy_miesiac | centrum | krzyki
+NFZ |= wszyscy
+print(len(NFZ))
