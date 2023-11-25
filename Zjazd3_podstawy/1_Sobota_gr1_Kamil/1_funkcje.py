@@ -20,3 +20,4 @@ imie = input('Podaj imie: ')
 przywitaj_spersonalizowane1(imie)
 print('................')
 przywitaj_spersonalizowane1('Erwina')
+
