@@ -21,3 +21,5 @@ if 'pies' in lista_robocza:
     print('Tak')
 else:
     print('nie')
+
+x = int(input('x'))
