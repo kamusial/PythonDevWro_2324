@@ -1,4 +1,4 @@
-def welcome(imie, wiek, plec):
+def welcome(imie, wiek, plec='k'):
     if wiek <= 20:
         print(f'cześć {imie}')
     else:
@@ -9,7 +9,6 @@ username = input('podaj imie: ')
 age = int(input('podaj wiek: '))
 
 welcome(username, age)
-
 
 welcome('Kamil', 23)
 
