@@ -13,16 +13,26 @@ Ogłoś zwycięzcę pojedynku :D
 
 
 class Character:
-    def __init__(self, hp, damage):
+    def __init__(self, name, hp, damage):
+        self.name = name
         self.hp = hp
         self.damage = damage
 
     def attack(self, target):
+        if not self.is_alive:
+            print(f"{self.name} can't attack because it's already dead")
+            return
+
         target.hp -= self.damage
 
+    @property
+    def is_alive(self) -> bool:
+        return self.hp > 0
 
-godzilla = Character(110, 15)
-hedora = Character(150, 10)
+
+
+godzilla = Character("Godzilla", 110, 15)
+hedora = Character("Hedora", 150, 10)
 
 while godzilla.hp > 0 and hedora.hp > 0:
     godzilla.attack(hedora)
