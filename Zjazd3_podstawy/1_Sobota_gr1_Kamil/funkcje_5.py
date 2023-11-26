@@ -25,6 +25,10 @@ def username_available(username):
         return False
 
 
+def suggest_name(name):
+    return name + '1'
+
+
 users_database = {
     'Kamil': '123',
     'Oliwia': 'Oliwia123',

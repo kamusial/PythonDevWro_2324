@@ -1,6 +1,6 @@
 # dany jest spis uzytkowników i ich haseł
 # program pozwala dodać użytkownika do bazy
-# program sprawdza, czy nazwa uzytkownika jes wolna
+# program sprawdza, czy nazwa uzytkownika jest wolna
 # jeśli nazwa zajęta, program proponuje własną nazwę
 
 from funkcje_5 import *

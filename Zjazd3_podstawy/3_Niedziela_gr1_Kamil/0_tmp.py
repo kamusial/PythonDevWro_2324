@@ -1,0 +1,1 @@
+print('piesek' + '1')
