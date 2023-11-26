@@ -11,6 +11,16 @@ class Auto:
         zasieg = self.ilosc_paliwa / self.spalanie_na_100 * 100 * 0.9
         return round(zasieg)
 
+    def ustaw_tryb(self, tryb):
+        if tryb == 'eco':
+            self.spalanie_na_100 = 10
+            self.tryb_ekonomiczny = True
+        elif tryb == 'normal':
+            self.spalanie_na_100 = 14
+            self.tryb_ekonomiczny = False
+        else:
+            print('brak zmian')
+
 auto1 = Auto('red', 2, 2)
 auto2 = Auto('white', 4, 4)
 auto_sasiada = Auto('black', 1, 12)
