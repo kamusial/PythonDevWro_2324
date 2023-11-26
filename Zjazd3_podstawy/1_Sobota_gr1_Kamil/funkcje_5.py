@@ -24,6 +24,7 @@ def username_available(username):
     else:
         return False
 
+
 users_database = {
     'Kamil': '123',
     'Oliwia': 'Oliwia123',
