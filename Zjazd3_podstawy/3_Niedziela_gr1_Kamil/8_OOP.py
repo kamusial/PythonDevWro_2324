@@ -31,3 +31,5 @@ if auto2.ilosc_paliwa > 5:
     auto_sasiada.kondycja += 1
 
 print(auto_sasiada.zasieg())
+auto2.ustaw_tryb('eco')
+print(auto2.spalanie_na_100)
