@@ -15,3 +15,12 @@ BALANCE = {
     2389654: 60
 }
 
+
+def get_username_balance(searched_username: str) -> int:
+    for user_id, username in NAMES.items():
+        if username == searched_username:
+            return BALANCE[user_id]
+
+
+balance = get_username_balance("tymoteusz")
+nothing = None
