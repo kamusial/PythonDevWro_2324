@@ -11,3 +11,24 @@ chorzy_miesiac = set([1234, 3476, 3098, 4544, 3423])
 centrum = {4544, 3423, 3254, 8769, 5436, 2345, 6532, 1243}
 krzyki = {7648, 2345, 2356, 3987, 1234, 3476, 3254}
 zbior_pusty = set()
+
+# suma zbiorów ->              |
+# cześć wspólna zbiorów   ->   &
+# różnica zbiorów  ->          -
+# różnica symetryczna  ->      ^
+
+
+# sprawdźmy, ile osób chorowało w ostatnim roku w centrum
+print(f'Chorzy w ostatnim roku w centrum to {chorzy_rok & centrum}')
+print(f'Liczba: {len(chorzy_rok & centrum)}\n')
+
+# Ile osób z centrum chorowło w ostatnim roku?
+print(f'Chorzy z centrum w ostatnio roku to: {centrum & chorzy_rok}')
+print(f'Liczba: {len(centrum & chorzy_rok)}\n')
+
+#            Sprawdźmy poprawność danych
+# każdy, kto chorował w ostatnim miesiącu, powinien jednocześnie chorować w ostatnim roku
+print(f'Ludzie chorujący w ostatnim miesiącu i NIEchorujący w ostatnim roku: {chorzy_miesiac - chorzy_rok}')
+print(f'Liczba: {chorzy_miesiac - chorzy_rok}')
+if len(chorzy_miesiac - chorzy_rok) == 0:
+    print('ok')
