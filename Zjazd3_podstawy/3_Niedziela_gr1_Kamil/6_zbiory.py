@@ -46,3 +46,5 @@ if len(centrum & krzyki) > 0:
     else:
         for pesel in centrum & krzyki:
             centrum.remove(pesel)
+
+# każdy: chory, zdrowy, z centeum i z krzyków, powinien być w bazie NFZ. Jeśli nie ma, trzeba dopisać)
