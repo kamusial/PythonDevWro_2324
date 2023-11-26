@@ -28,7 +28,21 @@ print(f'Liczba: {len(centrum & chorzy_rok)}\n')
 
 #            Sprawdźmy poprawność danych
 # każdy, kto chorował w ostatnim miesiącu, powinien jednocześnie chorować w ostatnim roku
-print(f'Ludzie chorujący w ostatnim miesiącu i NIEchorujący w ostatnim roku: {chorzy_miesiac - chorzy_rok}')
+print(f'Ludzie chorujący w ostatnim miesiącu i NIEchorujący w ostatnim roku: {chorzy_miesiac <= chorzy_rok}')
 print(f'Liczba: {chorzy_miesiac - chorzy_rok}')
 if len(chorzy_miesiac - chorzy_rok) == 0:
     print('ok')
+
+# nikt nie powinien mieszkać jednoczeście w centrum i na krzykach
+# jeśli są tacy, trzeba usunąć
+print(f'Ludzie mieszkający jednocześnie w centrum i na krzykach: {centrum & krzyki}')
+print(f'Liczba: {len(centrum & krzyki)}')
+if len(centrum & krzyki) > 0:
+    decision = input('skad usuwamy? K/C ')
+    if decision.upper() == 'C':
+        centrum = centrum - (centrum & krzyki)
+    elif decision.upper() == 'K':
+        krzyki -= centrum
+    else:
+        for pesel in centrum & krzyki:
+            centrum.remove(pesel)
