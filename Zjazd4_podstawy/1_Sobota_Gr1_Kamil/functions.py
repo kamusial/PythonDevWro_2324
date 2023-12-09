@@ -9,8 +9,9 @@ def no_of_unique_words(text):
     return len(text)
 
 def clear_text(text):
-    character = set('.,(\'\"')
-    for char in character:
+    characters = set('.,(\'\"')
+    text = text.lower()
+    for char in characters:
         text = text.replace(char, '')
     return text
 
@@ -22,8 +23,14 @@ def read_file(filename):
 def words_repeat(text):
     text = text.split()
     my_dict = {}
+    tmp_dict = {}
     for word in text:
         if word in my_dict.keys():
             my_dict[word] += 1
+            if my_dict[word] / len(text) > 0.02 and word not in tmp_dict.keys():
+                print(f'slowo "{word}" jest za czesto uzywane')
+                tmp_dict[word] = True
         else:
             my_dict[word] = 1
+    return my_dict
+
