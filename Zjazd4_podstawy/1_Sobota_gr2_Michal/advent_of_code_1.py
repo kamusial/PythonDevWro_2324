@@ -1,8 +1,7 @@
 """1. Znajdź pierwszą cyfrę od lewej i od prawej zadanego napisu
 2. Połącz tak znalezione 2 cyfry w liczbę 2-cyfrową."""
 from more_itertools import first
-
-SAMPLE_STRING = "oinj3odbifh5oiugbdfn4865nv"
+from pathlib import Path
 
 
 def get_2_digit_number(string: str) -> int:
@@ -19,3 +18,7 @@ def get_2_digit_number_2(string: str) -> int:
     return int(digit_1 + digit_2)
 
 
+advent_txt = Path(__file__).parent / "advent_1.txt"
+lines = open(advent_txt).readlines()
+result = sum(map(get_2_digit_number, lines))
+print(result)
