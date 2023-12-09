@@ -16,21 +16,26 @@ from abc import ABC, abstractmethod
 import matplotlib.pyplot as plt
 
 
-class Animal:
+class Animal(ABC):
+
+    @abstractmethod
     def forward(self, amount: int):
         ...
 
+    @abstractmethod
     def backward(self, amount: int):
         ...
 
+    @abstractmethod
     def left(self):
         ...
 
+    @abstractmethod
     def right(self):
         ...
 
 
-class Turtle:
+class Turtle(Animal):
 
     def __init__(self, x: int = 0, y: int = 0, direction: Literal[0, 1, 2, 3] = 0):
         self.x = x
@@ -87,7 +92,7 @@ class Turtle:
         return self.direction
 
 
-class Ant:
+class Ant(Animal):
 
     def __init__(self, x: int = 0, y: int = 0):
         self.x = x
@@ -110,7 +115,7 @@ class Ant:
         return self.x, self.y
 
 
-def my_custom_animal_path(animal):
+def my_custom_animal_path(animal: Animal):
     points = [(0, 0)]
     points.append(animal.forward(3))
     animal.right()
@@ -125,4 +130,3 @@ def my_custom_animal_path(animal):
 
 my_custom_animal_path(Turtle())
 my_custom_animal_path(Ant())
-my_custom_animal_path(56)
