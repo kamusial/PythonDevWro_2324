@@ -25,6 +25,7 @@ class Bills:
 
 class BobBuilder(Human):
     def __init__(self):
+        super().__init__()
         self.bills = Bills()
 
     def build(self):
