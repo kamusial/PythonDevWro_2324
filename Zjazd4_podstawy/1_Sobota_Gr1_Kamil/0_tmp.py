@@ -16,4 +16,10 @@ def after_a(text):
 my_string = 'Mama.kupila.psa'
 print(after_a(my_string))
 
+print('\nZbiory')
+zbior1 = {'.', ',', '(', '\'', '\"'}
+zbior2 = set('.,(\'\"')
+print(f'zbior1: {zbior1}')
+print(f'zbior2: {zbior2}')
+
 
