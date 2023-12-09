@@ -8,5 +8,9 @@ except ZeroDivisionError:
     result = 1
 except ValueError:
     result = 0
+else:
+    print(f'Udalo sie - tworze plik z logami')
+
+
 
 print(result)
