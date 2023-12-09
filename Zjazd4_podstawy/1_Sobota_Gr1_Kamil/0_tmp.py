@@ -23,3 +23,24 @@ print(f'zbior1: {zbior1}')
 print(f'zbior2: {zbior2}')
 
 
+def draw_lines(x, y, *coordinates):
+    start = [x, y]
+    for i in range(0, len(coordinates), 2):
+        print(f'Rysule linie z {start} do {coordinates[i]}, {coordinates[i+1]}')
+        start = [coordinates[i], coordinates[i+1]]
+
+def triangle(**data):
+    if 'a' in data.keys() and 'b' in data.keys() and 'c' in data.keys():
+        print(f'Liczę pole z 3 bokow')
+    elif 'a' in data.keys() and 'b' in data.keys() and 'alpha' in data.keys():
+        print(f'Liczę pole z 2 bokow i kata')
+    elif 'a' in data.keys() and 'alpha' in data.keys() and 'beta' in data.keys():
+        print(f'Liczę pole z boku i 2 katów')
+    elif 'a' in data.keys() and 'h' in data.keys():
+        print(f'Liczę pole z podstawy i wysokosci')
+    else:
+        print('no nie da sie')
+
+triangle(a=5, alpha=43, beta=23)
+
+#draw_lines(1, 1, 5, 6, 87, 3, 23, 1, 7, 6)

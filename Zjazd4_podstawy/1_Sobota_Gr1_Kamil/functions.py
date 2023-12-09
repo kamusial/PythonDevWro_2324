@@ -15,8 +15,8 @@ def clear_text(text):
         text = text.replace(char, '')
     return text
 
-def read_file(filename):
-    with open(filename, 'r', encoding='utf8') as file1:
+def read_file(filename, mode='r', encoding='utf8'):
+    with open(filename, mode, encoding=encoding) as file1:
         content = file1.read()
     return content
 
