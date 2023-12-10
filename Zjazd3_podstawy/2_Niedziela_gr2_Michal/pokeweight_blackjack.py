@@ -17,6 +17,7 @@ def get_random_pokemon() -> Pokemon:
     pokemon_data = response.json()
     return Pokemon(pokemon_data["name"], pokemon_data["weight"])
 
+
 """
 Jesteśmy w pokoju z pokemonami, i mamy wielką walizkę, w której
 możemy unieść 2000 wagi.
