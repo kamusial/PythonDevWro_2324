@@ -1,6 +1,6 @@
 import random
 from pathlib import Path
-import requests
+
 import httpx
 
 
