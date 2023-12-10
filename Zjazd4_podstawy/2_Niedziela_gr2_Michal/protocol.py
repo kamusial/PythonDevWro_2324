@@ -11,32 +11,27 @@ self.x = 0
 self.y = 0
 self.direction = "up"
 """
-from abc import ABC, abstractmethod
-from typing import Literal
+from typing import Literal, Protocol
 
 import matplotlib.pyplot as plt
 
 
-class Animal(ABC):
+class Animal(Protocol):
 
-    @abstractmethod
-    def forward(self, amount: int):
+    def forward(self, amount: int) -> tuple[int, int]:
         ...
 
-    @abstractmethod
-    def backward(self, amount: int):
+    def backward(self, amount: int) -> tuple[int, int]:
         ...
 
-    @abstractmethod
-    def left(self):
+    def left(self) -> int:
         ...
 
-    @abstractmethod
-    def right(self):
+    def right(self) -> int:
         ...
 
 
-class Turtle(Animal):
+class Turtle:
 
     def __init__(self, x: int = 0, y: int = 0, direction: Literal[0, 1, 2, 3] = 0):
         self.x = x
@@ -93,7 +88,7 @@ class Turtle(Animal):
         return self.direction
 
 
-class Ant(Animal):
+class Ant:
 
     def __init__(self, x: int = 0, y: int = 0):
         self.x = x
@@ -123,7 +118,7 @@ def my_custom_animal_path(animal: Animal):
     points.append(animal.forward(2))
     animal.right()
     points.append(animal.backward(1))
-
+    print(points)
     plt.scatter(*zip(*points))
     plt.plot(*zip(*points))
     plt.show()
