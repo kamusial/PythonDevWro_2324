@@ -5,3 +5,5 @@ tajne
 *.jpg
 *.jpeg
 __pycache__
+build
+*egg-info
