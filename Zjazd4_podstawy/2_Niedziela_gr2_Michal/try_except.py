@@ -4,7 +4,7 @@ print("robie sobie rzeczy")
 x = 46 / 3
 print("dalej robie sobie rzeczy")
 try:
-    y = 63 / 0
+    4 / 0
 except ZeroDivisionError:
     print("chopie, przez zero sie nie dzieli")
 except httpx.TimeoutException:
@@ -17,3 +17,14 @@ finally:
 print("chyba tej rzeczy już nie robie")
 z = 3 + 56
 print("koniec 'programu' xD")
+
+
+class CustomFailBecauseYes(Exception):
+    """When we ... yes"""
+
+
+def main():
+    raise CustomFailBecauseYes("Bo tak")
+
+
+main()
