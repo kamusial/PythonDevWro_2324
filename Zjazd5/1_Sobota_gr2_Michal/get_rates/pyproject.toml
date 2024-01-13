@@ -1,3 +1,10 @@
 [project]
 name = "rates"
 version = "0.1.0"
+dependencies = [
+    "httpx",
+    "click"
+]
+
+[project.scripts]
+rate = "rates.get_rate:main"
