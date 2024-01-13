@@ -22,7 +22,7 @@ print(df.describe().T.to_string())
 
 X = df.iloc[: , :-1]
 y = df.outcome
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
 
 model = LogisticRegression()
 model.fit(X_train, y_train)
@@ -36,7 +36,7 @@ df3 = pd.concat([df1, df2])
 
 X = df3.iloc[: , :-1]
 y = df3.outcome
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
 model = LogisticRegression()
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
