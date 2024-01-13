@@ -29,3 +29,8 @@ del (df["Gender_Male"])
 print(df.head())
 # dane wejściowe (niezależne) - height, gender,   dane wyjsciowe (zależne) - waga
 
+model = LinearRegression()
+model.fit(df[['Height', 'Gender_Female']], df['Weight'])
+print(f'wspolczynnki kierunkowy: {model.coef_},\nwyraz wolny: {model.intercept_}')
+
+print(f'wzór: Height * {model.coef_[0]} + Gender * {model.coef_[1]} + {model.intercept_}')
