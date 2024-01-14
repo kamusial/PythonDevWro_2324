@@ -31,3 +31,12 @@ Yki = [4, 2, 5, 7, 8]
 
 plt.plot(Xy, Yki, 'r')
 plt.show()
+
+
+#model zapisany
+import  joblib
+model_Kamila = joblib.load('Tree_v1.1.model')
+print(dir(model_Kamila))
+print(model_Kamila._estimator_type, model_Kamila.get_params)
+
+
