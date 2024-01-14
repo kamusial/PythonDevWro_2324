@@ -5,6 +5,9 @@ dependencies = [
     "httpx",
     "click>=5.0.0"
 ]
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["rates*"]
 
 [project.scripts]
 rate = "rates.get_rate:main"

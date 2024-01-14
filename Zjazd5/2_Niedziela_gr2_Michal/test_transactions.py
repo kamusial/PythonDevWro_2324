@@ -55,8 +55,7 @@ def test_transactions_amount_negative_credit():
 
 
 def test_transactions_amount_negative_debit():
-    with pytest.raises(ValueError) as pytest_object:
+    with pytest.raises(ValueError, match=r"Insufficient funds") as pytest_object:
         process_transactions([{"amount": 100, "type": "debit"}])
     assert isinstance(pytest_object.value, Exception)
     assert type(pytest_object.value) is ValueError
-    assert "Insufficient funds" in str(pytest_object.value)
