@@ -20,7 +20,7 @@ sample = np.array([5.6, 3.2, 5.2, 1.45])    # mój liść
 # plt.scatter(5.6, 3.2, c='r')
 # sns.scatterplot(data=df, x='sepallength', y='sepalwidth', hue='class')
 # plt.show()
-
+#
 # plt.scatter(5.2, 1.45, c='r')
 # sns.scatterplot(data=df, x='petallength', y='petalwidth', hue='class')
 # plt.show()
@@ -29,3 +29,24 @@ df['distance'] = (df.sepallength-sample[0]) ** 2 + (df.sepalwidth - sample[1]) *
                  (df.petallength - sample[2]) ** 2 + (df.petalwidth - sample[3]) ** 2
 
 print(df.sort_values('distance').head(10))
+
+print(df.head().to_string())
+X = df.iloc[  :  , 0  : 4  ]
+y = df.class_value
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# model = KNeighborsClassifier(n_neighbors=50, weights='distance')
+# model.fit(X_train, y_train)
+# print(model.score(X_test, y_test))
+# print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
+
+results = []
+for k in range(1, 51):
+    model = KNeighborsClassifier(k)
+    model.fit(X_train, y_train)
+    results.append(model.score(X_test, y_test))
+plt.plot(range(1, 51), results)
+plt.grid()
+plt.show()
