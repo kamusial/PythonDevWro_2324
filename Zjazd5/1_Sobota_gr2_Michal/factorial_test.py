@@ -7,6 +7,7 @@
 0!
 1
 """
+import pytest
 
 
 class OutOfRangeError(Exception):
@@ -35,21 +36,28 @@ pytest odpala wszystkie foldery/pliki/klasy/funkcje zaczynające się od "test"
 """
 
 
-def test_factorial():
-    result = factorial(5)
-    assert result == 120
+@pytest.mark.parametrize("factorial_input, expected_output",
+                         [
+                             (3, 6),
+                             (5, 120),
+                             (0, 1),
+                             (1, 1),
+                             (10, 3628800)
+                         ]
+                         )
+def test_factorial(factorial_input: int, expected_output: int):
+    result = factorial(factorial_input)
+    assert result == expected_output
 
 
-def test_factorial_2():
-    result = factorial(0)
-    assert result == 1
+def test_factorial_negative():
+    with pytest.raises(OutOfRangeError):
+        factorial(-1)
 
-
-def test_factorial_3():
-    result = factorial(1)
-    assert result == 1
-
-
-def test_factorial_4():
-    result = factorial(-1)
-    assert result == 1
+    # Ekwiwalent wbudowanymi funkcjonalnościami pythona:
+    # try:
+    #     factorial(-1)
+    # except OutOfRangeError:
+    #     pass
+    # else:
+    #     raise AssertionError("Passing negative number to factorial did not raise an exception")
