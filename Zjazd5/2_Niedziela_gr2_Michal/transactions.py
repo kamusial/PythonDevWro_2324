@@ -40,7 +40,7 @@ def process_transactions(transactions):
             raise ValueError("Insufficient funds for debit transaction.")
 
         if amount < 0:
-            raise ValueError("Transaction amount should be non-negative.")
+            raise ValueError("Transaction amount should be positive.")
 
         if transaction_type == 'credit':
             account_balance += amount

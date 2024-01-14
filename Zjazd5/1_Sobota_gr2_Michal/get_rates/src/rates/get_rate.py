@@ -2,8 +2,8 @@ import click
 import httpx
 
 
-def get_rate(currency: str):
-    response = httpx.get(f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/last")
+def get_rate(currency: str, internet=httpx):
+    response = internet.get(f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/last")
     rate_dict = response.json()["rates"][0]
     return rate_dict["mid"]
 
