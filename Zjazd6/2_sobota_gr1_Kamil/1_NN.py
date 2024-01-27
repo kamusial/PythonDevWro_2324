@@ -24,7 +24,7 @@ print(df.head())
 import matplotlib.pyplot as plt
 
 
-result = model.fit(df.F, df.C, epochs=5000, verbose=0)
+result = model.fit(df.F, df.C, epochs=20000, verbose=0)
 print(result.history.keys())
 
 df1 = pd.DataFrame(result.history)
