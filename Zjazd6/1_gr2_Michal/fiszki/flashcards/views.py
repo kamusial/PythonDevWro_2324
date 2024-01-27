@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Flashcard
+from .forms import CreateFlashcardForm
 
 
 def index(request):
@@ -12,4 +13,10 @@ def learn_flashcard(request, slug):
 
 
 def flashcard_list(request):
-    return render(request, "flashcard-list.html")
+    form = CreateFlashcardForm()
+    flashcards = Flashcard.objects.all()
+    context = {
+        "flashcards": flashcards,
+        "form": form
+    }
+    return render(request, "flashcard-list.html", context=context)

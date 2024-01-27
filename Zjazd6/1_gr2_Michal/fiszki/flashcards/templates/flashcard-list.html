@@ -6,12 +6,27 @@
     <main>
         <section id="flashcards">
             <h3 class="text-center p-2">Your Flashcards</h3>
+
+            <div>
+                <a type="button">New</a>
+                {{ form }}
+                <form id="hiddenForm" method="POST">
+
+                </form>
+                <button type="submit">
+                    Create New Flashcard
+                </button>
+
+            </div>
+
+
             <ul class="d-flex flex-wrap justify-content-start">
+                {% for flashcard in flashcards %}
                 <li>
                     <div class="card text-center text-white bg-info bg-gradient p-1 m-1"
                          style="min-width: 15rem;
                                 height: 6rem">
-                        <a class="card-title m-1" href="">Fiszka1</a>
+                        <a class="card-title m-1" href="">{{ flashcard.name }}</a>
                         <div>
                             <a class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-1"
                                type="button"
@@ -29,6 +44,7 @@
                         </div>
                     </div>
                 </li>
+                {% endfor %}
             </ul>
         </section>
     </main>
