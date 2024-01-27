@@ -6,5 +6,28 @@ penguins = sns.load_dataset('penguins')
 print(type(penguins))
 print(penguins.head().to_string())
 
-sns.pairplot(penguins, hue='species')
-plt.show()
+penguins_filtered = penguins.dropna().drop(columns=['island', 'sex'])
+print(penguins_filtered.head().to_string())
+
+penguins_features = penguins_filtered.drop(columns='species')
+target = pd.get_dummies(penguins_filtered['species'])
+print(target)
+
+from sklearn.model_selection import train_test_split
+from tensorflow import keras
+from numpy.random import seed
+seed(1)
+from tensorflow.random import set_seed
+set_seed(2)
+
+X_train, X_test, y_train, y_test = train_test_split(penguins_features, target, test_size=0.2)
+
+inputs = keras.Input(X_train.shape[1])
+hidden_layer1 = keras.layers.Dense(4, activation='relu')(inputs)
+hidden_layer2 = keras.layers.Dense(4, activation='relu')(hidden_layer1)
+output_layer = keras.layers.Dense(4, activation='relu')(hidden_layer2)
+
+model = keras.Model(inputs=inputs, outputs=output_layer)
+# print(model.summary())
+
+model.compile(optimizer="rmsprop", loss=keras.losses.categorical_crossentropy)
