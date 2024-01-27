@@ -8,4 +8,4 @@ __pycache__
 build
 *egg-info
 .coverage
-*db.sqlite
+*.sqlite3
