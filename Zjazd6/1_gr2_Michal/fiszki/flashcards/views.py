@@ -9,3 +9,7 @@ def index(request):
 def learn_flashcard(request, slug):
     flashcard = get_object_or_404(Flashcard, slug=slug)
     return render(request, "learn-flashcard.html", context={"flashcard": flashcard})
+
+
+def flashcard_list(request):
+    return render(request, "flashcard-list.html")

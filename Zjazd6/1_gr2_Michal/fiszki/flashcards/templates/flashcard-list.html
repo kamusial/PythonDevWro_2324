@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <main>
+        <section id="flashcards">
+            <h3 class="text-center p-2">Your Flashcards</h3>
+            <ul class="d-flex flex-wrap justify-content-start">
+                <li>
+                    <div class="card text-center text-white bg-info bg-gradient p-1 m-1"
+                         style="min-width: 15rem;
+                                height: 6rem">
+                        <a class="card-title m-1" href="">Fiszka1</a>
+                        <div>
+                            <a class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-1"
+                               type="button"
+                               href="">Learn</a>
+                            <form id="delete "
+                                  class="btn btn-alert navbar-btn bg-primary bg-gradient m-1"
+                                  method="POST">
+                                <a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-100-hover text-white"
+                                   type="button"
+                                   onclick="document.getElementById('delete ').submit()">
+                                    <input type="hidden" name="delete" value="">
+                                    Delete
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+{% endblock %}
