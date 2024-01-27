@@ -2,7 +2,30 @@
 {% load static %}
 
 {% block content %}
-<h1>{{ flashcard.name }}</h1>
-<h2>{{ flashcard.question }}</h2>
-<h3>{{ flashcard.answer }}</h3>
+    <br>
+    <style>
+    #hiddenDiv {
+        display: none;
+    }
+    </style>
+    <main>
+        <section id="flashcard"
+                 class="card text-black bg-white shadow-sm align-items-center">
+            <h3>Pytanie</h3>
+        </section>
+        <section id="answerButton" class="text-center">
+            <button id="showButton" class="btn btn-info btn-lg p-3">Pokaż</button>
+        </section>
+        <div id="hiddenDiv">
+            <h4 class="card text-white shadow-sm bg-success align-items-center">Odpowiedź</h4>
+        </div>
+        <script>
+        document.getElementById('showButton').addEventListener('click', function() {
+        var hiddenDiv = document.getElementById('hiddenDiv');
+        hiddenDiv.style.display = (hiddenDiv.style.display === 'block') ? 'none' : 'block';
+        var showButton = document.getElementById('showButton');
+        showButton.innerText = (hiddenDiv.style.display === 'none') ? 'Answer' : 'Hide';
+        });
+        </script>
+    </main>
 {% endblock %}
