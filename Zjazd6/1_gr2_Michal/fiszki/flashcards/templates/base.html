@@ -29,20 +29,9 @@
     <header class="navbar navbar-expand-lg p-0 bg-success bg-gradient shadow-sm">
         <a class="navbar-brand text-white m-3" href="/">Flashcards</a>
         <div class="collapse navbar-collapse m-3" id="navbarCollapse">
-            <ul class="btn bg-primary bg-gradient">
-                <li class="nav-item dropdown m-0">
-                    <a class="nav-link dropdown-toggle text-white"
-                       href="#"
-                       id="navbarDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">My</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">
-                            <li>???</li>
-                        </a>
-                    </ul>
-                </li>
+            <a type="button" href="{% url 'flashcards-collection' %}">
+                    <li class="btn bg-primary bg-gradient text-white m-3">My Collection</li>
+                </a>
             </ul>
         </div>
         <div>
