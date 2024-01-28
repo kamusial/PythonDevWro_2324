@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path("", views.index),
     path("flashcards/items/<slug:slug>", views.learn_flashcard, name="flashcard-learn"),
-    path("flashcards", views.flashcard_list, name="flashcards-collection")
+    path("flashcards", views.FlashcardList.as_view(), name="flashcards-collection")
 ]

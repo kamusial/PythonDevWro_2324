@@ -26,15 +26,17 @@
                             <a class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-1"
                                type="button"
                                href="{{ flashcard.learn_url }}">Learn</a>
-                            <form id="delete "
+                            <form id="delete {{ flashcard.slug }}"
                                   class="btn btn-alert navbar-btn bg-primary bg-gradient m-1"
                                   method="POST">
+                                <input type="hidden" name="requestType" value="DELETE">
+                                <input type="hidden" name="slug" value="{{ flashcard.slug }}">
                                 <a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-100-hover text-white"
                                    type="button"
-                                   onclick="document.getElementById('delete ').submit()">
-                                    <input type="hidden" name="delete" value="">
+                                   onclick="document.getElementById('delete {{ flashcard.slug }}').submit()">
                                     Delete
                                 </a>
+                                {% csrf_token %}
                             </form>
                         </div>
                     </div>
