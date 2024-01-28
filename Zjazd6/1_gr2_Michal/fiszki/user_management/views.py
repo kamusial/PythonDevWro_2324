@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User, auth
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from .forms import CreateUserForm, LoginForm
 
 
@@ -40,6 +42,12 @@ def login(request):
     return render(request,
                   "user_management/user-form.html",
                   context=context)
+
+
+def logout(request):
+    auth.logout(request)
+    index_url = reverse("index")
+    return redirect(f"{index_url}?logout=true")
 
 
 def user_session(request):

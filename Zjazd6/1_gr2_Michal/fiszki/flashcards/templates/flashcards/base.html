@@ -27,20 +27,24 @@
         <a class="navbar-brand text-white m-3" href="/">Flashcards</a>
         <div class="collapse navbar-collapse m-3" id="navbarCollapse">
             <a type="button" href="{% url 'flashcards-collection' %}">
-                <li class="btn bg-primary bg-gradient text-white m-3">My Collection</li>
+                <li class="btn bg-primary bg-gradient text-white m-0">My Collection</li>
             </a>
         </ul>
     </div>
     <div>
         <ul>
-            <a class="navbar-brand text-white m-3">Cześć {{ user.username }}</a>
             {% if not user.is_active %}
-            <a type="button" href="{% url 'registration' %}">
-                <li class="btn bg-primary bg-gradient text-white m-3">Register</li>
-            </a>
-            <a type="button" href="{% url 'user-login' %}">
-                <li class="btn bg-primary bg-gradient text-white m-3">Login</li>
-            </a>
+                <a type="button" href="{% url 'registration' %}">
+                    <li class="btn bg-primary bg-gradient text-white m-3">Register</li>
+                </a>
+                <a type="button" href="{% url 'user-login' %}">
+                    <li class="btn bg-primary bg-gradient text-white m-3">Login</li>
+                </a>
+            {% else %}
+                <a class="navbar-brand text-white m-3">Hello, {{ user.username }}</a>
+                <a class="" type="button" href="{% url 'user-logout' %}">
+                    <li class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-3">Logout</li>
+                </a>
             {% endif %}
         </ul>
     </div>
