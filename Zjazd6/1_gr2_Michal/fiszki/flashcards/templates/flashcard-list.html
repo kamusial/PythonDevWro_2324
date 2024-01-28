@@ -25,7 +25,7 @@
                         <div>
                             <a class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-1"
                                type="button"
-                               href="">Learn</a>
+                               href="{{ flashcard.learn_url }}">Learn</a>
                             <form id="delete "
                                   class="btn btn-alert navbar-btn bg-primary bg-gradient m-1"
                                   method="POST">
@@ -44,6 +44,11 @@
         </section>
     </main>
 
+    <style>
+    #hiddenForm {
+        display: none;
+    }
+    </style>
 
     <script>
         function toggleFormVisibility () {
