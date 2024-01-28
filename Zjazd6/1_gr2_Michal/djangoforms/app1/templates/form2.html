@@ -1,9 +1,9 @@
 <form method="POST">
-    <input type="text" name="imie">
-    <input type="text" name="nazwisko">
-    <button type="submit">WYŚLIJ</button>
+    {{ form }}
     {% csrf_token %}
+    <button type="submit">WYŚLIJ</button>
 </form>
+
 
 
 
