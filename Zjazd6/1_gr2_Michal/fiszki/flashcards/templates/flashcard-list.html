@@ -1,5 +1,7 @@
 {% extends "./base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
@@ -7,16 +9,9 @@
         <section id="flashcards">
             <h3 class="text-center p-2">Your Flashcards</h3>
 
-            <div>
-                <a type="button">New</a>
-                {{ form }}
-                <form id="hiddenForm" method="POST">
-
-                </form>
-                <button type="submit">
-                    Create New Flashcard
-                </button>
-
+            <div class="d-flex flex-column m-1">
+                <a class="btn btn-alert navbar-btn btn-lg bg-primary bg-gradient text-white m-1" id="showCreateFlashcardForm" type="button">New</a>
+                {% crispy form %}
             </div>
 
 
@@ -30,7 +25,7 @@
                         <div>
                             <a class="btn btn-alert navbar-btn bg-primary bg-gradient text-white m-1"
                                type="button"
-                               href="">Learn</a>
+                               href="{{ flashcard.learn_url }}">Learn</a>
                             <form id="delete "
                                   class="btn btn-alert navbar-btn bg-primary bg-gradient m-1"
                                   method="POST">
@@ -48,5 +43,23 @@
             </ul>
         </section>
     </main>
+
+    <style>
+    #hiddenForm {
+        display: none;
+    }
+    </style>
+
+    <script>
+        function toggleFormVisibility () {
+        var hiddenForm = document.getElementById('hiddenForm');
+        hiddenForm.style.display = (hiddenForm.style.display === 'block') ? 'none' : 'block';
+        var showButton = document.getElementById('showCreateFlashcardForm');
+        showButton.innerText = (hiddenForm.style.display === 'none') ? 'New' : 'Hide';
+        };
+        document.getElementById('showCreateFlashcardForm').addEventListener('click', function(e) {toggleFormVisibility();})
+    </script>
+
+
 
 {% endblock %}
