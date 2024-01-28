@@ -1,6 +1,5 @@
-{% extends "base.html" %}
+{% extends "./base.html" %}
 {% load static %}
-
 {% block content %}
     <br>
     <style>
@@ -18,6 +17,11 @@
         </section>
         <div id="hiddenDiv">
             <h4 class="card text-white shadow-sm bg-success align-items-center">{{ flashcard.answer }}</h4>
+            <div class="d-grid d-md-flex justify-content-center">
+                <a type="button"
+                   class="btn btn-info shadow-sm px-2 border-2 border-danger"
+                   href="{{ next_flashcard_url }}">Next</a>
+            </div>
         </div>
         <script>
         document.getElementById('showButton').addEventListener('click', function() {
