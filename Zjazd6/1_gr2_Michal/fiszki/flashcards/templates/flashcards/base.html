@@ -33,12 +33,15 @@
     </div>
     <div>
         <ul>
-            <a type="button" href="">
+            <a class="navbar-brand text-white m-3">Cześć {{ user.username }}</a>
+            {% if not user.is_active %}
+            <a type="button" href="{% url 'registration' %}">
                 <li class="btn bg-primary bg-gradient text-white m-3">Register</li>
             </a>
-            <a type="button" href="">
+            <a type="button" href="{% url 'user-login' %}">
                 <li class="btn bg-primary bg-gradient text-white m-3">Login</li>
             </a>
+            {% endif %}
         </ul>
     </div>
 </header>

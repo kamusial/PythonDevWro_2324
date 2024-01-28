@@ -1,11 +1,12 @@
 from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import auth
 from django.urls import reverse
 from django.utils.text import slugify
 from django.views import View
 from django.db.models import Q
 import random
-from .models import Flashcard
+from .models import Flashcard, UserFlashcardOwnership
 from .forms import CreateFlashcardForm
 
 
@@ -26,9 +27,10 @@ def learn_flashcard(request, slug):
 
 
 class FlashcardList(View):
+
     def get(self, request: HttpRequest):
         form = CreateFlashcardForm()
-        context = self._create_context(form)
+        context = self._create_context(request, form)
         return render(request, "flashcards/flashcard-list.html", context=context)
 
     def post(self, request: HttpRequest):
@@ -36,11 +38,14 @@ class FlashcardList(View):
             return self.delete(request)
         form = CreateFlashcardForm(request.POST)
         if form.is_valid():
+            user = auth.get_user(request)
             new_flashcard = Flashcard(**form.cleaned_data,
                                       slug=slugify(form.cleaned_data["name"]))
             new_flashcard.save()
+            new_ownership = UserFlashcardOwnership(user=user, flashcard=new_flashcard)
+            new_ownership.save()
             return redirect(reverse("flashcards-collection"))
-        context = self._create_context(form)
+        context = self._create_context(request, form)
         return render(request, "flashcards/flashcard-list.html", context=context)
 
     def delete(self, request: HttpRequest):
@@ -48,8 +53,10 @@ class FlashcardList(View):
         Flashcard.objects.filter(slug=slug).delete()
         return redirect(reverse("flashcards-collection"))
 
-    def _create_context(self, form):
-        flashcards = Flashcard.objects.all()
+    def _create_context(self, request, form):
+        user = auth.get_user(request)
+        user_ownerships: list[UserFlashcardOwnership] = UserFlashcardOwnership.objects.filter(user__username=user.username)
+        flashcards = [ownership.flashcard for ownership in user_ownerships]
         context = {
             "flashcards": flashcards,
             "form": form
