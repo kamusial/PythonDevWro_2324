@@ -1,0 +1,10 @@
+<form method="POST">
+    <input type="text" name="imie">
+    <input type="text" name="nazwisko">
+    <button type="submit">WYŚLIJ</button>
+    {% csrf_token %}
+</form>
+
+{% if imie_z_formularza %}
+<h1>SIEMA {{ imie_z_formularza }} {{ nazwisko_z_formularza }}</h1>
+{% endif %}
