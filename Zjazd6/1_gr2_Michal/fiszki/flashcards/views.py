@@ -2,7 +2,6 @@ import random
 from typing import Iterable
 
 from django.contrib.auth.models import auth
-from django.db.models import Q
 from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -15,7 +14,14 @@ from .models import Flashcard, UserFlashcardOwnership
 
 def index(request):
     logout = request.GET.get("logout")
-    return render(request, "flashcards/index.html", {"logout": logout})
+    empty_deck = request.GET.get("empty-deck")
+    return render(request,
+                  "flashcards/index.html",
+                  context={
+                      "logout": logout,
+                      "empty_deck": empty_deck
+                  }
+                  )
 
 
 def learn_flashcard(request, slug):
@@ -36,6 +42,10 @@ def learn_flashcard(request, slug):
 
 
 def learn_flashcard_redirect(request):
+    user_flashcards = _get_user_flashcards(request)
+    if not user_flashcards:
+        index_url = reverse("index")
+        return redirect(f"{index_url}?empty-deck=true")
     random_flashcard: Flashcard = random.choice(_get_user_flashcards(request))
     return redirect(reverse("flashcard-learn", args=[random_flashcard.slug]))
 

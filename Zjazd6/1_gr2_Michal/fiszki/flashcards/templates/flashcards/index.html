@@ -5,6 +5,10 @@
         <br>
         <h5 class="text-success text-center">Logged out successfully.</h5>
     {% endif %}
+    {% if empty_deck %}
+        <br>
+        <h5 class="text-success text-center">You have no flashcards yet. Go and create some!</h5>
+    {% endif %}
     <main class="text-center">
         <h1>Welcome to the flashcards app!</h1>
         <hr>
