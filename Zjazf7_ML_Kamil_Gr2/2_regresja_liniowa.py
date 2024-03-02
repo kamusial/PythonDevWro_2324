@@ -32,3 +32,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = LinearRegression()
 model.fit(X_train, y_train) # nauka na 80% danych
 print(model.score(X_test, y_test)) # sprawdź model na danych testowych
+
+print(pd.DataFrame(model.coef_, X.columns))
+
