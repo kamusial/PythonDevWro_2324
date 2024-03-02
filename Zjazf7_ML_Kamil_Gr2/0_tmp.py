@@ -15,6 +15,15 @@ df.Height *= 2.54   #pomnoz wszystko z kolumny przez 2.54
 df.Weight /= 2.2
 print(df)
 
+#gender to male i female - 2 wykresy wyświetlone razem
+sns.histplot(df.query("Gender=='Female'").Weight)  # tylko kobiety
+sns.histplot(df.query("Gender=='Male'").Weight)  #tylko faceci
+plt.show()
+
+#jedne wykres, różnie pokolorowany
+sns.histplot(data=df, x='Weight', hue='Gender')
+plt.show()
+
 #zamiana gender na daną numeryczną
 df = pd.get_dummies(df)
 del (df['Gender_Male'])
@@ -23,3 +32,10 @@ df = df.rename(columns={'Gender_Female':'Gender'})
 print(df)
 # 0, false   - facet      1, true 0 kobieta
 
+# wykres jeden dla wszystkich
+sns.histplot(df.Weight)
+plt.show()
+
+sns.histplot(df.query("Gender==True").Weight)  # tylko kobiety
+sns.histplot(df.query("Gender==False").Weight)  #tylko faceci
+plt.show()
