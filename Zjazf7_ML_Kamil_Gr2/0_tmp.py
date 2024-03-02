@@ -39,3 +39,12 @@ plt.show()
 sns.histplot(df.query("Gender==True").Weight)  # tylko kobiety
 sns.histplot(df.query("Gender==False").Weight)  #tylko faceci
 plt.show()
+
+# algorytm,  wejscia - height i gender    wyście - weight
+model = LinearRegression()
+model.fit(df[['Height', 'Gender']], df['Weight'])
+# model.coef_   - współczynnik kierunkowy
+# model.intercept_  - wyraz wolny
+print(f'wspolczynnik kierunkowy= {model.coef_}\nwyraz wolny= {model.intercept_}')
+
+print(f'Height * {model.coef_[0]} + gender * {[model.coef_[1]]} + model.intercept_ = weight')
