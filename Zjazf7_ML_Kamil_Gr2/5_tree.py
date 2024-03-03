@@ -3,8 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
+from mlxtend.plotting import plot_decision_regions
 
 df = pd.read_csv('iris.csv')
 print(df['class'].value_counts())
@@ -28,7 +30,8 @@ plt.show()
 X = df.iloc[:,    :4   ]  # wszystkie wiersze i 2 pierwsze kolumny - 4 cechy
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-model = KNeighborsClassifier(n_neighbors=5)   #, weights='distance')
+model = DecisionTreeClassifier(max_depth=2)
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
