@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 
-X, y = make_circles(n_samples=500, factor=0.5, noise=0.2)
+X, y = make_circles(n_samples=500, factor=0.4, noise=0.4)
 plt.scatter(X[:,0], X[:, 1], c=y)
 plt.show()
 
@@ -21,13 +21,13 @@ print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 
 print('\KNN')
-model = KNeighborsClassifier()
+model = KNeighborsClassifier(n_neighbors=5)#, weights='distance')
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 
 print('\Drzewo decyzyjne')
-model = DecisionTreeClassifier()
+model = DecisionTreeClassifier(max_depth=3, min_samples_split=2)
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
