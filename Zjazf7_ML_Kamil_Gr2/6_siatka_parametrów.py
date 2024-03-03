@@ -25,12 +25,12 @@ print(f'liczba cech {X.shape[1]}')
 
 model = DecisionTreeClassifier()
 params = {
-    'max_depth': range(3, 14, 2),
-    'max_features': range(3, X.shape[1]+1, 2),
-    'min_samples_split': [2, 4, 5],
+    'max_depth': range(2, 14),
+    'max_features': range(2, X.shape[1]+1),
+    'min_samples_split': [2, 3, 4, 5],
     'criterion': ['gini', 'entropy', 'log_loss']
 }
-grid = GridSearchCV(model, params, scoring='accuracy', cv=5, verbose=2)
+grid = GridSearchCV(model, params, scoring='accuracy', cv=10, verbose=1)
 grid.fit(X, y)
 print(grid.best_params_)
 print(grid.best_estimator_)
