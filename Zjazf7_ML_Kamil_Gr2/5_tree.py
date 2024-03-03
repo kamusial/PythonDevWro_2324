@@ -32,19 +32,3 @@ model = KNeighborsClassifier(n_neighbors=5)   #, weights='distance')
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
-
-# recznie
-df['distance'] = (df.sepallength - sample[0]) ** 2  +  (df.sepalwidth - sample[1]) ** 2  +\
-    (df.petallength - sample[2]) ** 2  +  (df.petalwidth - sample[3]) ** 2
-print(df.sort_values('distance').to_string())
-
-results = []
-for k in range(1, 50):
-    model = KNeighborsClassifier(n_neighbors=k) # , weights='distance')
-    model.fit(X_train, y_train)
-    results.append(model.score(X_test, y_test))
-
-# plt.scatter(x=range(1, 50), y=results) # wykres punktowy
-plt.plot(range(1, 50), results, 'b')   # linia ciągła
-plt.show()
-
