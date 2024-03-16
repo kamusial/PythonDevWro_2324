@@ -36,9 +36,9 @@ plt.scatter(df.F, df.C)
 plt.plot(df.F, C_pred, c='r')
 plt.show()
 
-# model.save('My_model.keras')
-# new_model = tf.keras.models.load_model('My_model.keras')
-# C_pred = new_model.keras.predict(df.F)
-# plt.scatter(df.F, df.C)
-# plt.plot(df.F, C_pred, c='r')
-# plt.show()
+model.save('My_model.keras')   # zapisanie modelu
+new_model = tf.keras.models.load_model('My_model.keras')   # załadowanie modelu
+C_pred = new_model.predict(df.F)
+plt.scatter(df.F, df.C)
+plt.plot(df.F, C_pred, c='r')
+plt.show()
