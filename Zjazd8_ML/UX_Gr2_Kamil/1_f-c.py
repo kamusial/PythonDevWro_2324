@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 # from tensorflow import set_seed
@@ -10,7 +11,9 @@ from tensorflow.keras.layers import Dense
 
 model = Sequential()
 model.add(Dense(1, input_shape=[1], activation='linear'))  # warstwa wejściowa
-model.add(Dense(2, activation='linear'))
+model.add(Dense(4, activation='linear'))
+model.add(Dense(4, activation='linear'))
+model.add(Dense(4, activation='linear'))
 model.add(Dense(1))  # warstwa wyjściowa
 
 model.compile(optimizer='rmsprop', loss='mse', metrics=['mae'])
@@ -32,3 +35,10 @@ C_pred = model.predict(df.F)
 plt.scatter(df.F, df.C)
 plt.plot(df.F, C_pred, c='r')
 plt.show()
+
+# model.save('My_model.keras')
+# new_model = tf.keras.models.load_model('My_model.keras')
+# C_pred = new_model.keras.predict(df.F)
+# plt.scatter(df.F, df.C)
+# plt.plot(df.F, C_pred, c='r')
+# plt.show()
