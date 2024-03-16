@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <h1>Your flashcard collection</h1>
+    <section>
+        <ul>
+            {% for flashcard in flashcards %}
+            <li class="card bg-info bg-gradient shadow-lg">
+                <a class="card-title m-1" href="{{ flashcard.learn_url }}">{{ flashcard.name }}</a>
+                <form method="POST">
+                    <input type="hidden" name="flashcard_slug" value="{{ flashcard.slug }}">
+
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock %}

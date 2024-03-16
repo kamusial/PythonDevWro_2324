@@ -22,6 +22,7 @@ from flashcards import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('flashcards/learn/', views.learn),
-    path('flashcards/learn/<slug:flashcard_slug>', views.learn_flashcard)
+    path('flashcards/', views.flashcards_list, name="flashcards-list"),
+    path('flashcards/learn/', views.learn, name="learn"),
+    path('flashcards/learn/<slug:flashcard_slug>', views.learn_flashcard, name="learn-flashcard")
 ]

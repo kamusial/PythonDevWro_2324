@@ -35,3 +35,11 @@ main {
 section {
     margin: 10px;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

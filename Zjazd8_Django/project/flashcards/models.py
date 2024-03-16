@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -14,3 +15,6 @@ class Flashcard(models.Model):
 
     def __str__(self):
         return self.name
+
+    def learn_url(self):
+        return reverse("learn-flashcard", args=[self.slug])
