@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>HELLO</h1>
+<ul>
+{% for flashcard in flashcards %}
+<li>
+    <h1>{{ flashcard.name }}</h1>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
