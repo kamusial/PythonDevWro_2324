@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Flashcards</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/styles.css">
+    </head>
+    <header class="navbar p-0 bg-success bg-gradient shadow-sm">
+                <a class="navbar-brand text-white m-3" href="/">Flashcards</a>
+        <div>
+            <ul>
+                <a type="button" href="">
+                    <li class="btn bg-primary bg-gradient text-white m-2">Register</li>
+                </a>
+                <a type="button" href="">
+                    <li class="btn bg-primary bg-gradient text-white m-2">Login</li>
+                </a>
+            </ul>
+        </div>
+    </header>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+    <footer class="bg-success">
+        <h5 class="m-1">Merito 2024</h5>
+    </footer>
+</html>

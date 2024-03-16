@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from flashcards import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
+    path('flashcards/learn/', views.learn),
+    path('flashcards/learn/<slug:flashcard_slug>', views.learn_flashcard)
 ]
