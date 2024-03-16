@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
-# from tensorflow import set_seed
+from tensorflow.random import set_seed
 
-# set_seed(0)
+set_seed(0)
 
 model = Sequential()
-model.add(Dense(1, input_shape=[1], activation='linear'))  # warstwa wejściowa
-model.add(Dense(4, activation='linear'))
-model.add(Dense(4, activation='linear'))
+model.add(Dense(1, activation='relu'))  # warstwa wejściowa
+model.add(Dense(4, activation='relu'))
+model.add(Dense(4, activation='relu'))
 model.add(Dense(4, activation='linear'))
 model.add(Dense(1))  # warstwa wyjściowa
 
@@ -23,7 +23,7 @@ print(df.head())
 plt.scatter(df.F, df.C)
 plt.show()
 
-result = model.fit(df.F, df.C, epochs=100, verbose=2)
+result = model.fit(df.F, df.C, epochs=1000, verbose=2)
 print(f'\n{result.history}')  # funkcja straty
 
 df1 = pd.DataFrame(result.history)
