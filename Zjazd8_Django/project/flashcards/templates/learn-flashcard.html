@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 <main class="text-center">
-    Hello {{ flashcard.question }}
+    <section class="card text-black bg-white shadow-sm p-2 align-items-center">
+        {{ flashcard.question }}
+    </section>
+    <section>
+        <button id="showAnswerButton" class="btn btn-info btn-lg p-3">Show answer</button>
+    </section>
+    <div id="hiddenAnswer" style="display: none;">
+        <section class="card text-black bg-success shadow-sm p-2 align-items-center">
+            {{ flashcard.answer }}
+        </section>
+        <a type="button"
+           class="btn btn-info shadow-sm"
+           href="{{ next_flashcard.url? }}">
+            Next
+        </a>
+    </div>
 </main>
+
+
+<script>
+    document.getElementById('showAnswerButton').addEventListener('click', function() {
+        var answerDiv = document.getElementById('hiddenAnswer');
+        hiddenAnswer.style.display = (answerDiv.style.display === 'block') ? 'none' : 'block';
+        var answerButton = document.getElementById('showAnswerButton');
+        answerButton.innerText = (answerDiv.style.display === 'block') ? 'Hide' : 'Show answer';
+    });
+</script>
+
 {% endblock %}

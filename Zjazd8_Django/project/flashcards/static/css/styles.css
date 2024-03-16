@@ -31,3 +31,7 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
 }
+
+section {
+    margin: 10px;
+}

@@ -11,7 +11,16 @@ def index(request):
 
 def learn_flashcard(request, flashcard_slug):
     flashcard = Flashcard.objects.get(slug=flashcard_slug)
-    return render(request, "learn-flashcard.html", context={"flashcard": flashcard})
+    next_flashcards = Flashcard.objects.filter(pk__gt=flashcard.pk)
+    if next_flashcards.exists():
+        next_flashcard = next_flashcards.first()
+    else:
+        next_flashcard = Flashcard.objects.all().first()
+    context = {
+        "flashcard": flashcard,
+        "next_flashcard": f"/flashcards/learn/{next_flashcard.slug}"
+    }
+    return render(request, "learn-flashcard.html", context=context)
 
 
 def learn(request):
