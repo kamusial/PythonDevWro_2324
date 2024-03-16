@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>HELLO</h1>
-<ul>
-{% for flashcard in flashcards %}
-<li>
-    <h1>{{ flashcard.name }}</h1>
-</li>
-{% endfor %}
-</ul>
+<main>
+    <h1>Welcome welcome!</h1>
+    <h2>Please log in</h2>
+    <a class="btn" type="button" href="/flashcards/learn/">Learn</a>
+</main>
 {% endblock %}
