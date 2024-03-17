@@ -8,8 +8,7 @@ root.minsize(200, 400)
 root.maxsize(800, 600)
 root.attributes('-alpha', 0.9)   # przeźroczystość
 root.attributes('-topmost', 1)   # zawsze na wierzchu
-root.i
-
+root.iconbitmap('./ikona.ico')
 
 message = tk.Label(root, text='No siema')
 message.pack()
