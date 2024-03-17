@@ -37,10 +37,14 @@ print(Counter(y))  # zlicz
 score = []
 kfold = RepeatedStratifiedKFold()
 for train, test in kfold.split(X,y):
-    model = MLPClassifier(max_iter=100)
+    model = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=200, activation='relu')
     X_train, X_test = X.iloc[train, :], X.iloc[test, :]
-    y_train, y_test = y.iloc[train, :], y.iloc[test, :]
+    y_train, y_test = y.iloc[train], y.iloc[test]
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     score.append(accuracy_score(y_test, y_pred))
 print(score)
+
+plt.plot(score)
+plt.grid()
+plt.show()
