@@ -7,6 +7,7 @@ from sklearn.neural_network import MLPClassifier
 from collections import Counter
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 
 ################ Pandas - settings
 pd.set_option('display.max_rows', 5000)
@@ -23,13 +24,23 @@ print(X.describe())
 print(Counter(y))  # zlicz
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=100, activation='relu')
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
 
-from sklearn.metrics import confusion_matrix
+# ##### wersja 1
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# model = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=100, activation='relu')
+# model.fit(X_train, y_train)
+# y_pred = model.predict(X_test)
+# print(confusion_matrix(y_test, y_pred))
+# print(accuracy_score(y_test, y_pred))
+# print(model.n_layers_)
 
-print(confusion_matrix(y_test, y_pred))
-print(accuracy_score(y_test, y_pred))
-print(model.n_layers_)
+score = []
+kfold = RepeatedStratifiedKFold()
+for train, test in kfold.split(X,y):
+    model = MLPClassifier(max_iter=100)
+    X_train, X_test = X.iloc[train, :], X.iloc[test, :]
+    y_train, y_test = y.iloc[train, :], y.iloc[test, :]
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    score.append(accuracy_score(y_test, y_pred))
+print(score)
