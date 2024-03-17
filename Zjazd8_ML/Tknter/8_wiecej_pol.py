@@ -47,7 +47,7 @@ btn6.grid(row=1, column=2, sticky=tk.W+tk.E, pady=20, padx=10)
 buttonframe.pack(fill='x')
 
 nextbtn = tk.Button(root, text='TEST')
-nextbtn.place(x=200, y=400, height=100, width=100)
+nextbtn.place(x=150, y=500, height=100, width=200)
 
 
 root.mainloop()
