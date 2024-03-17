@@ -1,6 +1,7 @@
 from random import choice
 
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from .models import Flashcard
 
@@ -31,5 +32,11 @@ def learn(request):
 
 
 def flashcards_list(request):
+    if request.method == "POST":
+        flashcard_slug = request.POST["flashcard_slug"]
+        flashcard = Flashcard.objects.filter(slug=flashcard_slug)
+        if flashcard.exists():
+            flashcard.delete()
+        return redirect(reverse("flashcards-list"))
     flashcards = Flashcard.objects.all()
     return render(request, "flashcard-list.html", context={"flashcards": flashcards})
