@@ -2,6 +2,7 @@ from random import choice
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.utils.text import slugify
 
 from .forms import NewFlashcardForm
 from .models import Flashcard, UserFlashcardRelationship
@@ -51,6 +52,8 @@ def add_flashcard(request):
     form = NewFlashcardForm()
     if request.method == "POST":
         form = NewFlashcardForm(request.POST)
-        form.save()
+        flashcard = form.save()
+        new_relationship = UserFlashcardRelationship(user=request.user, flashcard=flashcard)
+        new_relationship.save()
         return redirect("flashcards-list")
     return render(request, "add-flashcard.html", context={"form": form})
