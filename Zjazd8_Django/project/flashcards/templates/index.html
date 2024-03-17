@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<main>
-    <h1>Welcome welcome!</h1>
-    <h2>Please log in</h2>
-    <a class="btn" type="button" href="{% url 'learn' %}">Learn</a>
+<main class="text-center">
+    {% if request.GET.logout %}
+        <h4 class="text-success">Logged out successfully</h4>
+    {% endif %}
+    {% if request.user.is_active %}
+        <h2>Hello, {{ request.user.username }}</h2>
+        <a class="btn bg-primary bg-gradient text-white m-2" type="button" href="{% url 'learn' %}">Learn</a>
+    {% else %}
+        <h1>Welcome welcome!</h1>
+        <h2>Please log in</h2>
+        <a class="btn bg-primary bg-gradient text-white m-2" type="button" href="{% url 'login' %}">Login</a>
+    {% endif %}
 </main>
 {% endblock %}
