@@ -37,7 +37,7 @@ print(Counter(y))  # zlicz
 score = []
 kfold = RepeatedStratifiedKFold()
 for train, test in kfold.split(X,y):
-    model = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=200, activation='relu')
+    model = MLPClassifier(hidden_layer_sizes=(100), max_iter=200, activation='relu')
     X_train, X_test = X.iloc[train, :], X.iloc[test, :]
     y_train, y_test = y.iloc[train], y.iloc[test]
     model.fit(X_train, y_train)
@@ -45,6 +45,11 @@ for train, test in kfold.split(X,y):
     score.append(accuracy_score(y_test, y_pred))
 print(score)
 
+import joblib
+joblib.dump(model, 'My_model.model')   # zapisanie modelu
+# new_model = tf.keras.models.load_model('My_model.keras')   # załadowanie modelu
+new_model = joblib.load('My_model.model')
+new_model.fit(X_test, y_test)
 plt.plot(score)
 plt.grid()
 plt.show()
