@@ -3,6 +3,7 @@ from random import choice
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+from .forms import NewFlashcardForm
 from .models import Flashcard
 
 
@@ -37,6 +38,15 @@ def flashcards_list(request):
         flashcard = Flashcard.objects.filter(slug=flashcard_slug)
         if flashcard.exists():
             flashcard.delete()
-        return redirect(reverse("flashcards-list"))
+        return redirect("flashcards-list")
     flashcards = Flashcard.objects.all()
     return render(request, "flashcard-list.html", context={"flashcards": flashcards})
+
+
+def add_flashcard(request):
+    form = NewFlashcardForm()
+    if request.method == "POST":
+        form = NewFlashcardForm(request.POST)
+        form.save()
+        return redirect("flashcards-list")
+    return render(request, "add-flashcard.html", context={"form": form})

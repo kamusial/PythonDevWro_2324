@@ -5,11 +5,11 @@
     <section>
         <ul>
             {% for flashcard in flashcards %}
-            <li class="card bg-info bg-gradient shadow-lg">
-                <a class="card-title m-1" href="{{ flashcard.learn_url }}">{{ flashcard.name }}</a>
-                <form id="delete {{ flashcard.slug }}" class="btn btn-alert" method="POST">
+            <li class="card bg-info bg-gradient shadow-lg d-inline-flex flex-row">
+                <a class="card-title m-1 p-1" href="{{ flashcard.learn_url }}">{{ flashcard.name }}</a>
+                <form id="delete {{ flashcard.slug }}" class="btn btn-alert m-1 p-1" method="POST">
                     <input type="hidden" name="flashcard_slug" value="{{ flashcard.slug }}">
-                    <i class="fa-solid fa-square-xmark" onclick="document.getElementById('delete {{ flashcard.slug }}').submit()"></i>
+                    <i class="fa-solid fa-square-xmark py-1" onclick="document.getElementById('delete {{ flashcard.slug }}').submit()"></i>
                     {% csrf_token %}
                 </form>
             </li>
