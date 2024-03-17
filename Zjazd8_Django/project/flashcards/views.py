@@ -1,10 +1,10 @@
 from random import choice
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.urls import reverse
 
 from .forms import NewFlashcardForm
-from .models import Flashcard
+from .models import Flashcard, UserFlashcardRelationship
 
 
 def index(request):
@@ -26,12 +26,14 @@ def learn_flashcard(request, flashcard_slug):
     return render(request, "learn-flashcard.html", context=context)
 
 
+@login_required(login_url="login")
 def learn(request):
     flashcards = Flashcard.objects.all()
     random_flashcard: Flashcard = choice(flashcards)
     return redirect(random_flashcard.learn_url())
 
 
+@login_required(login_url="login")
 def flashcards_list(request):
     if request.method == "POST":
         flashcard_slug = request.POST["flashcard_slug"]
@@ -39,10 +41,12 @@ def flashcards_list(request):
         if flashcard.exists():
             flashcard.delete()
         return redirect("flashcards-list")
-    flashcards = Flashcard.objects.all()
+    user_relationships = UserFlashcardRelationship.objects.filter(user__username=request.user.username)
+    flashcards: list[Flashcard] = [relationship.flashcard for relationship in user_relationships]
     return render(request, "flashcard-list.html", context={"flashcards": flashcards})
 
 
+@login_required(login_url="login")
 def add_flashcard(request):
     form = NewFlashcardForm()
     if request.method == "POST":

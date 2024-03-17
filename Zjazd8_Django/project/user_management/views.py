@@ -3,6 +3,8 @@ from typing import Optional
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.urls import reverse
+
 from .forms import CreateUserForm, LoginForm
 
 
@@ -27,3 +29,9 @@ def login(request):
             auth.login(request, user)
             return redirect("flashcards-list")
     return render(request, "user_form.html", context={"form": form})
+
+
+def logout(request):
+    auth.logout(request)
+    index_url = reverse("index")
+    return redirect(f"{index_url}?logout=true")
