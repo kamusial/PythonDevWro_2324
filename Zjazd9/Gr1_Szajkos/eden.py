@@ -1,11 +1,22 @@
 """
 Program który tłumaczy podany tekst z danego języka na polski.
 """
+import click
 import httpx
 import keyring
 
 
+@click.group()
+def cli():
+    ...
+
+
+@cli.command
+@click.argument("text")
+@click.option("-sl", "--source-language", default="en")
+@click.option("-tl", "--target-language", default="pl")
 def translate(text: str, source_language: str = "en", target_language: str = "pl") -> str:
+    print(source_language)
     api_key = keyring.get_password("eden", "api_key")
     url = "https://api.edenai.run/v2/translation/automatic_translation"
     payload = {
@@ -24,11 +35,17 @@ def translate(text: str, source_language: str = "en", target_language: str = "pl
     }
 
     response = httpx.post(url, json=payload, headers=headers)
-    return response.json()["microsoft"]["text"]
+    result = response.json()["microsoft"]["text"]
+    print(result)
+    return result
 
 
+@cli.command
+@click.argument("api_key")
 def login(api_key: str):
     keyring.set_password("eden", "api_key", api_key)
+    print("API KEY set")
 
 
-print(translate("I love pancakes"))
+if __name__ == '__main__':
+    cli()
