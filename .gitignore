@@ -6,6 +6,8 @@ tajne
 *.jpeg
 __pycache__
 build
+dist
+*.spec
 *egg-info
 .coverage
 *.sqlite3
