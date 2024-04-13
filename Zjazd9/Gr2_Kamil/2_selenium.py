@@ -11,11 +11,20 @@ driver.get('https://www.saucedemo.com/')
 print('Nazwa strony', driver.title)
 time.sleep(1)
 
-username_field = driver.find_element('id', 'user-name')
+try:
+    username_field = driver.find_element('name', 'user-nameA')   #zła nazwa
+except:
+    print('nie znaleziono po "name", szukam po ID')
+    username_field = driver.find_element('id', 'user-name')
 username_field.clear()
 username_field.send_keys('standard_user')
 
-password_field = driver.find_element(By.XPATH, '//*[@id="password"]')
+try:
+    password_field = driver.find_element(By.XPATH, '//*[@id="password"]')
+except NoSuchElementException:
+    print('nie znaleziono hasła')
+    raise
+
 password_field.clear()
 password_field.send_keys('secret_sauce')
 
@@ -26,5 +35,7 @@ if not login_button.get_attribute('disabled'):
     print('Przycisk aktywny')
     login_button.click()
 
+
 time.sleep(1)
+driver.get_screenshot_as_file('moj_screenshot.png')
 driver.quit()
