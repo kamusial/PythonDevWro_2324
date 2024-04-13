@@ -7,6 +7,8 @@ Program daje nam wybór 1 z 2 - pozostań przy swoich drzwiach, albo zmień zdan
 Jaka jest szansa na wygraną przy strategii "Zostanę przy swoim"
 A jaka przy zmianie zdania?
 
+Odpal monty_hall_game z obiema strategiami po 10000 razy.
+Wyprintuj ile % razy udało się wygrać jedną i drugą strategią.
 """
 import random
 
@@ -32,10 +34,15 @@ def monty_hall_game(change_choice: bool):
     return doors[chosen_door]
 
 
+def monty_hall_win_chance(change_choice: bool):
+    won_games = 0
+    for _ in range(10000):
+        result = monty_hall_game(change_choice)
+        if result == "car":
+            won_games += 1
+    return 100 * won_games / 10000
 
 
-"""Odpal monty_hall_game z obiema strategiami po 10000 razy.
-Wyprintuj ile % razy udało się wygrać jedną i drugą strategią.
-"""
 if __name__ == '__main__':
-    print(monty_hall_game(False))
+    print(f"If we don't change our mind we have {monty_hall_win_chance(False)}% probability to win a car")
+    print(f"If we change our mind we have {monty_hall_win_chance(True)}% probability to win a car")
