@@ -33,3 +33,12 @@ For Loop in List
     FOR    ${number}    IN    @{list_of_numbers}
         IF    ${number} == 3    log    Numer to: ${number}
     END
+
+Zagniezdzone petle
+    @{litery}   create list    a    b    c    d
+    @{liczby}    create list    1     2     3
+    FOR    ${litera}    IN    @{litery}
+        FOR    ${liczba}    IN    @{liczby}
+            Log    wynik: ${litera} ${liczba}
+        END
+    END

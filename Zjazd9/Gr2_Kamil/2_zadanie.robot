@@ -4,7 +4,7 @@ Test Setup  Open My Browser
 Test Teardown    close browser
 
 *** Variables ***
-@{emails}  email1@wwp.pl  email2@wwp.pl   email3@wwp.pl   email4@wwp.pl   email5@wwp.pl
+@{emails}  aemail1@wwp.pl  aemail2@wwp.pl   aemail3@wwp.pl   aemail4@wwp.pl   aemail5@wwp.pl
 @{passwords}  pass1  pass2  pass3  pass4  pass5
 ${message}    Dziękujemy za założenie nowego konta.
 *** Keywords ***
