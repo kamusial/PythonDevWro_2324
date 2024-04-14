@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Test Setup  Open My Browser
+Test Teardown    close browser
 
 *** Variables ***
 @{emails}  email1@wwp.pl  email2@wwp.pl   email3@wwp.pl   email4@wwp.pl   email5@wwp.pl
@@ -11,13 +12,14 @@ Open My Browser
     Open Browser    https://gotujmy.pl/forum/    Chrome
     Maximize Browser Window
     sleep    3
-    Scroll Element Into View    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
-    Run Keyword And Ignore Error    click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
+#    Scroll Element Into View    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
+    Run Keyword And Ignore Error    click button    //*[@id="qc-cmp2-ui"]/div[2]/div/button[2]
+
 
 Registration In Forum
     [Arguments]  ${name}   ${password}
     Click Element    //*[@id="navTop"]/nav/ul[1]/li[2]/a
-    Run Keyword And Ignore Error    click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
+#    Run Keyword And Ignore Error    click button    //*[@id="tcf277-permissions-modal"]/div[3]/div/button[2]
     input text    //*[@id="f_cmu_email"]    ${name}
     input text    //*[@id="f_cmu_email2"]    ${name}
     input text    //*[@id="f_cmu_password"]     ${password}
