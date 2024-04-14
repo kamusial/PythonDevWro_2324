@@ -4,3 +4,4 @@ keyring
 click
 fastavro
 pydantic-avro
+matplotlib
