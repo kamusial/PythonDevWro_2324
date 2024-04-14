@@ -7,3 +7,5 @@ pydantic-avro
 matplotlib
 pyqt6
 markdown
+pytest
+pytest-cov

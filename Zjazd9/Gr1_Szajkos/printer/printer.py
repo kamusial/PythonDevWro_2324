@@ -15,12 +15,16 @@ def prepare_document(text: str) -> QTextDocument:
     return document
 
 
-def print_markdown_file(filepath: str):
+def print_on_paper(document):
+    printer = QPrinter()
+    return document.print(printer)
+
+
+def print_markdown_file(filepath: str, print_func=print_on_paper):
     text = read_file(filepath)
     with QApplication([]):
         document = prepare_document(text)
-        printer = QPrinter()
-        document.print(printer)
+        return print_func(document)
 
 
 if __name__ == '__main__':
