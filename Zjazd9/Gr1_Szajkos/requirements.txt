@@ -3,3 +3,4 @@ httpx
 keyring
 click
 fastavro
+pydantic-avro
