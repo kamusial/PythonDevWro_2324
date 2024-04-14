@@ -5,3 +5,5 @@ click
 fastavro
 pydantic-avro
 matplotlib
+pyqt6
+markdown
