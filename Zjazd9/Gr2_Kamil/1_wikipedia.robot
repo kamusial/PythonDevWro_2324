@@ -16,16 +16,21 @@ Log in wikipedia
     Click Element    id:pt-login-2
     Sleep    2
     input text    id:wpName1    ${login}
-    input text    id:wpPassword1    ${password}
+    input password    id:wpPassword1    ${password}
     select checkbox    id:wpRemember
     click button    id:wpLoginAttempt
 
 *** Test Cases ***
 Successful login
     Log in wikipedia    login=${wikipedia login}     password=${wikipedia correct password}
-    Wait Until Element Is Visible    id:ca-nstab-project    2
+    Wait Until Element Is Visible    id:a-nstab-project    2
     Capture Page Screenshot
     close browser
 
 Failed Login
     Log in wikipedia    login=${wikipedia login}     password=${wikipedia wrong password}
+    Wait Until Element Is Visible    xpath://*[@id="userloginForm"]/form/div[1]/div    3
+#    Wait Until Element Is Visible  css:.mw-message-box-error    3
+    ${my error message}    get text    xpath://*[@id="userloginForm"]/form/div[1]/div
+    log    ${my error message}
+    log to console    Wiadomosc: ${my error message}
