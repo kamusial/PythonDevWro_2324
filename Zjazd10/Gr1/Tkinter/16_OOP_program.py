@@ -5,7 +5,26 @@ from tkinter import messagebox
 class MyGui:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.geometry('300x500+1400+100')
+        self.root.geometry('400x500+1400+50')
+        self.root.attributes('-alpha', 0.9)
+        self.root.config(background="Light Blue")
+
+        self.menubar = tk.Menu(self.root)
+        self.filemenu = tk.Menu(self.menubar, tearoff=0)
+        self.filemenu.add_command(label='Zamknij', command=self.zamknij)
+        self.filemenu.add_command(label='czysc', command=self.czysc)
+
+        self.filemenu2 = tk.Menu(self.menubar)
+        self.filemenu2.add_command(label='Zamknij od razu', command=exit)
+        self.filemenu2.add_separator()
+        self.filemenu2.add_command(label='nic nie rob')
+
+        self.menubar.add_cascade(menu=self.filemenu, label='Pierwsze')
+        self.menubar.add_cascade(menu=self.filemenu2, label='Drugie')
+        self.root.config(menu=self.menubar)
+
+
+
         self.label = tk.Label(self.root, text='moj text')
         self.label.config(
             background='#555',
