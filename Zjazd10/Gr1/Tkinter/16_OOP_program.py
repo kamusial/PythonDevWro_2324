@@ -23,14 +23,16 @@ class MyGui:
         self.check = tk.Checkbutton(self.root, text='show', font=('Arial', 15), variable=self.check_state)
         self.check.pack(padx=10, pady=10)
 
-        self.button = tk.Button(self.root, text='Show message', font=('Arial', 15))
+        self.button = tk.Button(self.root, text='Show message', font=('Arial', 15), command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
         self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
 
+        self.clearbtn = tk.Button(self.root, text='czysc', font=('Arial', 16), command=self.czysc)
+        self.clearbtn.pack(padx=10, pady=10)
+
         self.root.mainloop()
 
-        self.clearbtn = tk.Button(self.root, text='czysc', font=('Arial', 16), command=self.czysc)
 
     def short(self, event):
         # print('\nevent', event)
