@@ -23,8 +23,6 @@ class MyGui:
         self.menubar.add_cascade(menu=self.filemenu2, label='Drugie')
         self.root.config(menu=self.menubar)
 
-
-
         self.label = tk.Label(self.root, text='moj text')
         self.label.config(
             background='#555',
