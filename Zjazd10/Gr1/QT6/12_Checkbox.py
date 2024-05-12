@@ -31,20 +31,22 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label_2)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.checkBox = QtWidgets.QCheckBox(parent=self.widget)
         self.checkBox.setObjectName("checkBox")
         self.checkBox.stateChanged.connect(self.check_selected)
         self.verticalLayout.addWidget(self.checkBox)
+
         self.checkBox_2 = QtWidgets.QCheckBox(parent=self.widget)
         self.checkBox_2.setObjectName("checkBox_2")
         self.checkBox_2.stateChanged.connect(self.check_selected)
-
         self.verticalLayout.addWidget(self.checkBox_2)
+
         self.checkBox_3 = QtWidgets.QCheckBox(parent=self.widget)
         self.checkBox_3.setObjectName("checkBox_3")
         self.checkBox_3.stateChanged.connect(self.check_selected)
-
         self.verticalLayout.addWidget(self.checkBox_3)
+
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
