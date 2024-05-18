@@ -28,8 +28,8 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle('Moje widgety')
-        layout = QVBoxLayout()
-        # layout = QHBoxLayout()
+        # layout = QVBoxLayout()
+        layout = QHBoxLayout()
 
         widgets = [
             QCheckBox,
@@ -50,8 +50,12 @@ class MainWindow(QMainWindow):
             QTimeEdit,
         ]
 
+        for w in widgets:
+            layout.addWidget(w())
 
-
+        main_widget = QWidget()
+        main_widget.setLayout(layout)
+        self.setCentralWidget(main_widget)
 
 app = QApplication(sys.argv)
 window = MainWindow()
