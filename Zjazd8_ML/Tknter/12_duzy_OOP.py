@@ -21,13 +21,14 @@ class MyGui:
         self.label.pack()
 
         self.textbox = tk.Text(self.root, height=5, font=('Arial', 15))
+        self.textbox.bind('<KeyPress>', self.short)
         self.textbox.pack(padx=10, pady=10)
 
         self.check_state = tk.IntVar()
         self.check = tk.Checkbutton(self.root, text='show', font=('Arial', 15), variable=self.check_state)
         self.check.pack(padx=10, pady=10)
 
-        self.button = tk.Button(self.root, text='show message', font=('Arial', 16))
+        self.button = tk.Button(self.root, text='show message', font=('Arial', 16), command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
         self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
@@ -38,6 +39,20 @@ class MyGui:
         print('Zamykam')
         if messagebox.askyesno(title='Potwierdzenie', message='Czy napewno?'):
             self.root.destroy()
+
+    def short(self, event):
+        print(event)
+        print(event.keysym)
+        print(event.state)
+        if event.keysym == 'Return' and event.state == 12:
+            self.zamknij()
+
+    def show_message(self):
+        print('Wiadomosc')
+        if self.check_state.get() == 0:
+            print(self.textbox.get('1.0', tk.END))
+        else:
+            messagebox.showinfo(title='Wiadomosc', message=self.textbox.get('1.0', tk.END))
 
 
 MyGui()
