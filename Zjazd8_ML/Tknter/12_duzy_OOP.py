@@ -6,10 +6,23 @@ class MyGui:
         self.root = tk.Tk()
 
         self.root.title('Pierwszy OOP')
-        self.root.geometry('600x400+1300+50')
+        self.root.geometry('500x500+1300+50')
         self.root.attributes('-alpha', 0.8)
         self.root.attributes('-topmost', 1)
         self.root.config(background='Light Blue')
+
+        self.menubar = tk.Menu(self.root)
+        self.filemenu = tk.Menu(self.menubar)
+        self.filemenu.add_command(label='Close', command=exit)
+        self.filemenu.add_command(label='Do nothing')
+
+        self.filemenu2 = tk.Menu(self.menubar)
+        self.filemenu2.add_command(label='Close2', command=self.zamknij)
+        self.filemenu2.add_command(label='pokaz wiadomosc', command=self.show_message)
+
+        self.menubar.add_cascade(menu=self.filemenu, label='Pole 1')
+        self.menubar.add_cascade(menu=self.filemenu2, label='Pole 2')
+        self.root.config(menu=self.menubar)
 
         self.label = tk.Label(self.root, text='Reagujemy na klawisze')
         self.label.config(
@@ -31,6 +44,9 @@ class MyGui:
         self.button = tk.Button(self.root, text='show message', font=('Arial', 16), command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
+        self.clearbtn = tk.Button(self.root, text='clear', font=("Arial", 18), command=self.clear)
+        self.clearbtn.pack(padx=10, pady=10)
+
         self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
 
         self.root.mainloop()
@@ -46,6 +62,8 @@ class MyGui:
         print(event.state)
         if event.keysym == 'Return' and event.state == 12:
             self.zamknij()
+        if event.keysym == 'Return' and event.state == 9:
+            self.show_message()
 
     def show_message(self):
         print('Wiadomosc')
@@ -53,6 +71,9 @@ class MyGui:
             print(self.textbox.get('1.0', tk.END))
         else:
             messagebox.showinfo(title='Wiadomosc', message=self.textbox.get('1.0', tk.END))
+
+    def clear(self):
+        self.textbox.delete('1.0', tk.END)
 
 
 MyGui()
