@@ -22,3 +22,19 @@ wysun[wydatki.index('nauka')] = 0.2
 plt.pie(wartosci, labels=wydatki, explode=wysun, shadow=True)
 plt.show()
 
+#2 wykresy sąsiadujące poziomo
+import math
+
+X = [x for x in range(0, 720+1, 10)]
+Y1 = [ math.cos(math.radians(i))                                for i in X]
+Y2 = [random.random() for i in X]
+
+plt.subplot(1, 3, 1)   #poziomy, piony, index
+plt.plot(X, Y1, 'r.-')
+plt.subplot(1, 3, 2)   #poziomy, piony, index
+plt.plot(X, Y2, 'bs:')
+plt.subplot(1, 3, 3)   #poziomy, piony, index
+plt.plot(X, Y1, 'r.-')
+plt.subplot(1, 3, 3)   #poziomy, piony, index
+plt.plot(X, Y2, 'bs:')
+plt.show()
