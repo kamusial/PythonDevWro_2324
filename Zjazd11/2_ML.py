@@ -50,3 +50,49 @@ for k in range(1, 50):
 plt.title('KNN - distance')
 plt.plot(range(1, 50), results2)
 plt.show()
+
+
+print('\nDrzewo decyzyjne')
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
+results = []
+for k in range(1, 20):
+    model = DecisionTreeClassifier(max_depth=k)
+    model.fit(X_train, y_train)
+    results.append(model.score(X_test, y_test))
+
+plt.title('Tree')
+# plt.scatter(x=range(1, 20), y=results) # wykres punktowy
+plt.plot(range(1, 20), results, 'b')   # linia ciągła
+plt.show()
+
+print('\nSVC')
+model = SVC()
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
+results = []
+for kernel in ['linear', 'poly', 'rbf', 'sigmoid']:
+    model = SVC(kernel=kernel)
+    model.fit(X_train, y_train)
+    results.append(model.score(X_test, y_test))
+
+plt.title('SVN - kernels')
+plt.scatter(x=range(1, 5), y=results) # wykres punktowy
+# plt.plot(range(1, 5), results, 'b')   # linia ciągła
+plt.show()
+
+results = []
+for degree in range (1, 10):
+    model = SVC(kernel='poly', degree=degree)
+    model.fit(X_train, y_train)
+    results.append(model.score(X_test, y_test))
+
+plt.title('SVN - poly, degree')
+# plt.scatter(x=range(1, 10), y=results) # wykres punktowy
+plt.plot(range(1, 10), results, 'b')   # linia ciągła
+plt.show()
