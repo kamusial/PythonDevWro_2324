@@ -108,3 +108,38 @@ grid = GridSearchCV(model, params, scoring='accuracy', cv=10, verbose=1)
 grid.fit(X_train, y_train)
 print(grid.best_params_)
 print(grid.best_score_)
+
+print('\nKNN')
+model = KNeighborsClassifier()
+params = {
+    'n_neighbors': range(5, 50, 3),
+    'weights': ['uniform', 'distance']
+}
+grid = GridSearchCV(model, params, scoring="accuracy", cv=10, verbose=1)
+grid.fit(X_train, y_train)
+print(grid.best_params_)
+print(grid.best_score_)
+
+print('\nDrzewo decyzyjne')
+model = DecisionTreeClassifier()
+params = {
+    'max_depth': range(3, 14),
+    'max_features': range(3, X_train.shape[1]+1),
+    'min_samples_split': [2, 3, 4, 5],
+    'criterion': ['gini', 'entropy', 'log_loss']
+}
+grid = GridSearchCV(model, params, scoring="accuracy", cv=10, verbose=1)
+grid.fit(X_train, y_train)
+print(grid.best_params_)
+print(grid.best_score_)
+
+print('\nSVC')
+model = SVC()
+params = {
+    'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
+    'degree': range(2, 10),
+}
+grid = GridSearchCV(model, params, scoring="accuracy", cv=10, verbose=1)
+grid.fit(X_train, y_train)
+print(grid.best_params_)
+print(grid.best_score_)
