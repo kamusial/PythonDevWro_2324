@@ -96,3 +96,15 @@ plt.title('SVN - poly, degree')
 # plt.scatter(x=range(1, 10), y=results) # wykres punktowy
 plt.plot(range(1, 10), results, 'b')   # linia ciągła
 plt.show()
+
+print('Part2 siatka parametrów')
+
+print('\n Logistyczna regresja')
+model = LogisticRegression()
+params = {
+    'penalty': ['None', 'l1', 'l2', 'elasticnet']
+}
+grid = GridSearchCV(model, params, scoring='accuracy', cv=10, verbose=1)
+grid.fit(X_train, y_train)
+print(grid.best_params_)
+print(grid.best_score_)
